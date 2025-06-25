@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    Accordion Card
+  </title>
+  <style>
+    body {
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #141414;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .accordion {
+      width: 330px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .accordion-item {
+      border-bottom: 1px solid #ddd;
+    }
+
+    .accordion-header {
+      padding: 20px;
+      cursor: pointer;
+      background: #fafafa;
+      position: relative;
+      font-weight: bold;
+    }
+
+    .accordion-header::after {
+      content: '+';
+      position: absolute;
+      right: 20px;
+      font-size: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .accordion-header.active::after {
+      content: '';
+    }
+
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 20px;
+      transition: all 0.3s ease;
+      background: #fff;
+    }
+
+    .accordion-body.open {
+      padding: 15px 20px;
+      max-height: 300px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="accordion" id="accordion">
+    <div class="accordion-item">
+      <div class="accordion-header">What is Learning Axis?</div>
+      <div class="accordion-body">
+        Learning Axis is an IT service provider offering web development SEO, graphic design and more.
+      </div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header">Wich services are included?</div>
+      <div class="accordion-body">
+        Services include custom websites, WordPress, SEO, paid marketing, AI tools, and more.
+      </div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header">How do I get started?</div>
+      <div class="accordion-body">
+        Visit the contact page, fill out the form, and our team will get in touch with you.
+      </div>
+    </div>
+  </div>
+  <script>
+
+  </script>
+</body>
+
+</html>
