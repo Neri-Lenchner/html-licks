@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <title>
-    Accordion Card
-  </title>
+  <title>Accordion Card</title>
   <style>
     body {
       height: 100vh;
@@ -45,34 +42,34 @@
     }
 
     .accordion-header.active::after {
-      content: '';
+      content: '-'; /* Change to minus sign when active */
+      transform: rotate(180deg);
     }
 
     .accordion-body {
       max-height: 0;
       overflow: hidden;
       padding: 0 20px;
-      transition: all 0.3s ease;
+      transition: max-height 0.3s ease, padding 0.3s ease;
       background: #fff;
     }
 
     .accordion-body.open {
       padding: 15px 20px;
-      max-height: 300px;
+      max-height: 500px; /* Increased to accommodate more content */
     }
   </style>
 </head>
-
 <body>
   <div class="accordion" id="accordion">
     <div class="accordion-item">
       <div class="accordion-header">What is Learning Axis?</div>
       <div class="accordion-body">
-        Learning Axis is an IT service provider offering web development SEO, graphic design and more.
+        Learning Axis is an IT service provider offering web development, SEO, graphic design, and more.
       </div>
     </div>
     <div class="accordion-item">
-      <div class="accordion-header">Wich services are included?</div>
+      <div class="accordion-header">Which services are included?</div>
       <div class="accordion-body">
         Services include custom websites, WordPress, SEO, paid marketing, AI tools, and more.
       </div>
@@ -89,15 +86,14 @@
     headers.forEach((header) => {
       header.addEventListener('click', () => {
         const currentlyActive = document.querySelector('.accordion-header.active');
-          if (currentlyActive &&  currentlyActive !== header) {
-            currentlyActive.classList.remove('active');
-            currentlyActive.nextElementSibling.classList.remove('open');
-          }
-          header.classList.toggle('active');
-          header.nextElementSibling.classList.toggle('open');
+        if (currentlyActive && currentlyActive !== header) {
+          currentlyActive.classList.remove('active');
+          currentlyActive.nextElementSibling.classList.remove('open');
+        }
+        header.classList.toggle('active');
+        header.nextElementSibling.classList.toggle('open');
       });
     });
   </script>
 </body>
-
 </html>
