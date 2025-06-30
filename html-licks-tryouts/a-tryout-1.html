@@ -1,31 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>
-      Tryout 1
-    </title>
 
-     <link rel="stylesheet" href="tryouts-styles/05-squers-animation.css">
-      
-     
-    <style>
+<head>
+  <title>
+    Tryout 1
+  </title>
 
-      /*/////////////Body////////////*/
+  <link rel="stylesheet" href="tryouts-styles/05-squers-animation.css">
+
+
+  <style>
+    /*/////////////Body////////////*/
 
     body {
       display: grid;
       grid-template-columns: 2fr 2fr;
       column-gap: 10px;
       row-gap: 10px;
-      background-color: rgb(4, 27, 4);
+      background-color: black;
     }
+
     .divs {
-      border: solid 2px red;
+      border: solid 2px white;
+      border-radius: 5px;
       height: 30em;
     }
 
-      /*/////////////Hover-me////////////*/
-      
+    /*/////////////Hover-me////////////*/
+
     .container1 {
       background: #faf3cc;
       height: 100%;
@@ -80,9 +82,9 @@
       height: 100%;
     }
 
-     /*/////////////Clock////////////*/
+    /*/////////////Clock////////////*/
 
-     .clocks-div {
+    .clocks-div {
       height: 100%;
       margin: 0;
       background: #0f2027;
@@ -91,7 +93,7 @@
       justify-content: center;
       align-items: center;
       font-family: 'Courier New', monospace;
-     }
+    }
 
     .clock {
       font-size: 30px;
@@ -101,40 +103,85 @@
       box-shadow: 0 0 40px rgba(0, 255, 255, 0.3);
       letter-spacing: 4px;
     }
+
     .clocks-text {
       display: block;
       color: white;
     }
-         
-    </style>
-  </head>
-  <body>
-    <div class="divs">
-      <div class="container1">
-        <span class="btn">I Love My Ariel Shilo</span>
-      </div>
-    </div>
-  
-     <div  class="divs clocks-div">
-       <div class="clock" id="clock">
-        00.00.00
-      </div>
-    </div>
 
-     <div  class="divs">
-      3
-    </div>
-     <div class="divs div-2 squers-animation-div">
-      <div>I love my<br>yahli or</div>
-      <div class="loader">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      </div>
-    </div>
+    /*/////////////Heart////////////*/
 
-    <script>
+    .heart {
+      position: relative;
+      background-color: black;
+      overflow: hidden;
+    }
+
+    .heart3d {
+      position: absolute;
+      top: 20%;
+      left: 20%;
+      width: 200px;
+      height: 325px;
+      transform-style: preserve-3d;
+      animation: spin 15s infinite linear;
+    }
+
+    .heart3d div {
+      position: absolute;
+      opacity: 0;
+      width: 80%;
+      height: 80%;
+      border: solid red;
+      border-radius: 50% 50% 0 / 40% 50% 0;
+      border-width: 1px 1px 0 0;
+      box-shadow: 1px 0 0 rgba(255, 255, 255, 0.25);
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotateY(360deg) rotateX(360deg);
+      }
+    }
+
+    @keyframes appear {
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="divs">
+    <div class="container1">
+      <span class="btn">I Love My Ariel Shilo</span>
+    </div>
+  </div>
+
+  <div class="divs clocks-div">
+    <div class="clock" id="clock">
+      00.00.00
+    </div>
+  </div>
+
+  <div class="divs heart">
+    <div class="heart3d"></div>
+  </div>
+
+  <div class="divs div-2 squers-animation-div">
+    <div>I love my<br>yahli or</div>
+    <div class="loader">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  <script>
+    /// Clock Function ///
+
     function updateClock() {
       const now = new Date();
       const hours = String(now.getHours()).padStart(2, '0');
@@ -144,6 +191,19 @@
     }
     setInterval(updateClock, 1000);
     updateClock();
-    </script>
-  </body>
+
+
+    /// 3D Heart function ///
+
+    const heart = document.querySelector('.heart3d');
+
+    for (let i = 1; i <= 36; i++) {
+      let rib = document.createElement('div');
+      rib.style.animation = `appear 1s ${i * 0.1}s infinite alternate linear`;
+      rib.style.transform = `rotateY(${i * 10}deg) rotateZ(45deg) translateX(62px)`;
+      heart.appendChild(rib);
+    }
+  </script>
+</body>
+
 </html>
